@@ -39,14 +39,13 @@ const CommentsDashboard = () => {
         setFilteredComments(response.data);
       });
     axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
-      setUser(response.data[0]); // Load the first user's data
+      setUser(response.data[0]);
     });
   }, []);
 
   useEffect(() => {
     let updatedComments = [...comments];
 
-    // Apply search filter
     if (search) {
       const lowercasedSearch = search.toLowerCase();
       updatedComments = updatedComments.filter(
@@ -57,7 +56,6 @@ const CommentsDashboard = () => {
       );
     }
 
-    // Apply sorting
     if (sortColumn && sortOrder) {
       updatedComments.sort((a, b) => {
         const valueA = a[sortColumn as keyof Comment];
@@ -99,7 +97,6 @@ const CommentsDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Top Bar */}
       <div className="bg-purple-700 text-white py-6 px-10 flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Comments Dashboard</h1>
         <div className="flex items-center gap-4">
@@ -121,7 +118,6 @@ const CommentsDashboard = () => {
       </div>
 
       <div className="max-w-6xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
-        {/* Controls: Search and Sort */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex gap-2">
             <button
@@ -171,7 +167,7 @@ const CommentsDashboard = () => {
           />
         </div>
 
-        {/* Table */}
+        {/* Table Full */}
         <div className="rounded-lg shadow-lg overflow-hidden border border-gray-300">
           <table className="table-auto w-full">
             <thead className="bg-gray-100">
@@ -208,7 +204,7 @@ const CommentsDashboard = () => {
           </table>
         </div>
 
-        {/* Pagination Controls */}
+        {/* Pagination FunctionalIty */}
         <div className="flex justify-between items-center mt-6">
           <span className="text-gray-600">
             {`${(page - 1) * pageSize + 1}-${Math.min(

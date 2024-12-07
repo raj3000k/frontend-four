@@ -23,7 +23,7 @@ const ProfileScreen = () => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
-        setUser(response.data[0]); // Load the first user's data
+        setUser(response.data[0]);
       })
       .catch((error) => console.error("Error fetching user:", error));
   }, []);
